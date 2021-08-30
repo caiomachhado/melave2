@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MeLave</string>
+    <string name="usuario">Usuario</string>
+    <string name="senha">Senha</string>
+    <string name="buttonLogin">Login</string>
+    <string name="keepLoggedin">Lembrar minha senha</string>
 </resources>
