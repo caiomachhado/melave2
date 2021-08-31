@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -74,12 +75,22 @@ class LoginActivity : AppCompatActivity() {
                     updateUi()
                 } else {
 
-                    Log.d(TAG, "Erro ao logar.")
+                    Log.e(TAG, "Erro ao logar.",task.exception)
+                    Toast.makeText(this@LoginActivity, "Autenticação com Falhas", Toast.LENGTH_SHORT).show()
+
                 }
 
             }
 
+        } else {
+            Toast.makeText(this@LoginActivity, "Entre com mais detalhes", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun updateUi() {
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 }
