@@ -23,11 +23,29 @@ class CreateAccountActivity : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
+    private val TAG = "CreateAccountActivity"
+
+    private var usuario: String? = null
+    private var email: String? = null
+    private var senha: String? = null
+    private var reSenha: String? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+
+        initialise()
     }
 
+    private fun initialise(){
+        edit_text_usuario = findViewById<EditText>(R.id.edit_text_usuario)
+        edit_text_email = findViewById<EditText>(R.id.edit_text_email)
+        edit_text_senha = findViewById<EditText>(R.id.edit_text_senha)
+        edit_text_reSenha = findViewById<EditText>(R.id.edit_text_reSenha)
 
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase?
+    }
 
 }
