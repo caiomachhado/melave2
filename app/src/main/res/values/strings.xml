@@ -2,6 +2,9 @@
     <string name="app_name">MeLave</string>
     <string name="usuario">Usuario</string>
     <string name="senha">Senha</string>
+    <string name="reSenha">Repita sua Senha</string>
     <string name="buttonLogin">Login</string>
+    <string name="buttonCreate">Criar Conta</string>
+    <string name="emailLogin">Email</string>
     <string name="keepLoggedin">Lembrar minha senha</string>
 </resources>
