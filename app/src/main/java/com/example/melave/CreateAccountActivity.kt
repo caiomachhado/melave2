@@ -1,6 +1,7 @@
 package com.example.melave
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
@@ -84,10 +85,46 @@ class CreateAccountActivity() : AppCompatActivity() {
 
                 verifyEmail();
 
-                
+                val currentUserDb = mDatabaseReference!!.child(userId)
+                currentUserDb.child("usuario").setValue(usuario)
+                currentUserDb.child("email").setValue(email)
+
+                updateUserInfoandUi()
+
+            } else {
+
+            Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
+                Toast.makeText(this@CreateAccountActivity, "A autenticação falhou", Toast.LENGTH_SHORT).show()
 
             }
 
+            }
+
+        }
+
+        private fun updateUserInfoandUi(){
+            val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+
+        }
+
+        private fun verifyEmail(){
+            val mUser = mAuth!!.currentUser;
+            mUser!!.sendEmailVerification().addOnCompleteListener(this) {
+                task ->
+
+                if (task.isSuccessful){
+                    Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para " + mUser.getEmail(),
+                    Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.e(TAG, "SendEmailVerification", task.exception)
+                    Toast.makeText(this@CreateAccountActivity, "Erro ao enviar email de verificação.",
+                    Toast.LENGTH_SHORT).show()
+                }
+
+
+            }
         }
 
 }
