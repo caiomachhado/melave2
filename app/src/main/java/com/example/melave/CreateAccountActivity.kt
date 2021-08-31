@@ -1,18 +1,17 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.melave
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -46,27 +45,27 @@ class CreateAccountActivity() : AppCompatActivity() {
         initialise()
     }
 
-    private fun initialise(){
+    private fun initialise() {
         edit_text_usuario = findViewById<EditText>(R.id.edit_text_usuario)
         edit_text_email = findViewById<EditText>(R.id.edit_text_email)
         edit_text_senha = findViewById<EditText>(R.id.edit_text_senha)
         edit_text_reSenha = findViewById<EditText>(R.id.edit_text_reSenha)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        btn_create!!.setOnClickListener( createNewAccount() )
+        btn_create!!.setOnClickListener(createNewAccount())
 
     }
 
-    private fun createNewAccount() {
+    private fun createNewAccount(): View.OnClickListener? {
         usuario = edit_text_usuario?.text.toString()
         email = edit_text_email?.text.toString()
         senha = edit_text_senha?.text.toString()
         reSenha = edit_text_reSenha?.text.toString()
 
-        if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha) && !TextUtils.isEmpty(reSenha)){
+        if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha) && !TextUtils.isEmpty(reSenha)) {
             Toast.makeText(this, "Informações preenchidas corretamente", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Entre com mais detalhes", Toast.LENGTH_SHORT).show()
@@ -75,10 +74,10 @@ class CreateAccountActivity() : AppCompatActivity() {
         mProgressBar!!.setMessage("Registrando Usuario...")
         mProgressBar!!.show()
 
-        mAuth!!.createUserWithEmailAndPassword(email!!, senha!!).addOnCompleteListener(this){task ->
+        mAuth!!.createUserWithEmailAndPassword(email!!, senha!!).addOnCompleteListener(this) { task ->
             mProgressBar!!.hide()
 
-            if (task.isSuccessful){
+            if (task.isSuccessful) {
                 Log.d(TAG, "CreateUserWithEmail:Sucess")
 
                 val userId = mAuth!!.currentUser!!.uid
@@ -89,43 +88,36 @@ class CreateAccountActivity() : AppCompatActivity() {
                 currentUserDb.child("usuario").setValue(usuario)
                 currentUserDb.child("email").setValue(email)
 
-                updateUserInfoandUi()
+                updateUserInfoandUi();
 
             } else {
 
-            Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
+                Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
                 Toast.makeText(this@CreateAccountActivity, "A autenticação falhou", Toast.LENGTH_SHORT).show()
 
             }
-
-            }
-
         }
+    }
 
-        private fun updateUserInfoandUi(){
-            val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+    private fun verifyEmail() {
+        val mUser = mAuth!!.currentUser;
+        mUser!!.sendEmailVerification().addOnCompleteListener(this){
+            task ->
 
-        }
-
-        private fun verifyEmail(){
-            val mUser = mAuth!!.currentUser;
-            mUser!!.sendEmailVerification().addOnCompleteListener(this) {
-                task ->
-
-                if (task.isSuccessful){
-                    Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para " + mUser.getEmail(),
-                    Toast.LENGTH_SHORT).show()
-                } else {
-                    Log.e(TAG, "SendEmailVerification", task.exception)
-                    Toast.makeText(this@CreateAccountActivity, "Erro ao enviar email de verificação.",
-                    Toast.LENGTH_SHORT).show()
-                }
-
-
+            if(task.isSuccessful){
+                Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para" + mUser.email,
+                        Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
+    private fun updateUserInfoandUi() {
+        val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
 }
+
+
+
 
