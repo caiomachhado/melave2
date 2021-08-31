@@ -55,11 +55,11 @@ class CreateAccountActivity() : AppCompatActivity() {
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        btn_create!!.setOnClickListener(createNewAccount())
+        btn_create!!.setOnClickListener { createNewAccount() }
 
     }
 
-    private fun createNewAccount(): View.OnClickListener? {
+    private fun createNewAccount() {
         usuario = edit_text_usuario?.text.toString()
         email = edit_text_email?.text.toString()
         senha = edit_text_senha?.text.toString()
@@ -97,6 +97,7 @@ class CreateAccountActivity() : AppCompatActivity() {
 
             }
         }
+
     }
 
     private fun verifyEmail() {
@@ -107,6 +108,9 @@ class CreateAccountActivity() : AppCompatActivity() {
             if(task.isSuccessful){
                 Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para" + mUser.email,
                         Toast.LENGTH_SHORT).show()
+            } else {
+                Log.e(TAG, "SendEmailVerification", task.exception)
+                Toast.makeText(this@CreateAccountActivity, "Erro ao enviar email de verificação.", Toast.LENGTH_SHORT).show()
             }
         }
     }
