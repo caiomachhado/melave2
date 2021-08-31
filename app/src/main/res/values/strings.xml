@@ -7,4 +7,5 @@
     <string name="buttonCreate">Criar Conta</string>
     <string name="emailLogin">Email</string>
     <string name="keepLoggedin">Lembrar minha senha</string>
+    <string name="forgotPassword">Esqueci minha senha</string>
 </resources>

@@ -8,18 +8,18 @@
 
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_text_usuario"
+        android:id="@+id/edit_text_login_email"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="148dp"
-        android:hint="@string/usuario"
+        android:hint="@string/emailLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/edit_text_password_login"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="16dp"
@@ -27,17 +27,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_login_email" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_create"
+        android:id="@+id/btn_login"
         android:layout_width="159dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:text="@string/buttonLogin"
-        app:layout_constraintEnd_toEndOf="@+id/edit_text_email"
-        app:layout_constraintStart_toStartOf="@+id/edit_text_email"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_password_login"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_password_login"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_login" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_create_account"
+        android:layout_width="159dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="188dp"
+        android:text="@string/buttonCreate"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_password_login"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_password_login"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_login" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/checkBox"
@@ -45,8 +56,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/keepLoggedin"
-        app:layout_constraintEnd_toEndOf="@+id/btn_create"
-        app:layout_constraintStart_toStartOf="@+id/btn_create"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <TextView
+        android:id="@+id/edit_text_forgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgotPassword"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="416dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

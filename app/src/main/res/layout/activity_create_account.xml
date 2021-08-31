@@ -7,7 +7,7 @@
     tools:context=".CreateAccountActivity">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_text_usuario"
+        android:id="@+id/edit_text_login_email"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="148dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/edit_text_password_login"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="44dp"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_login_email" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_text_senha"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_login" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_text_reSenha"
@@ -51,15 +51,15 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_text_senha" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_create"
+        android:id="@+id/btn_login"
         android:layout_width="159dp"
         android:layout_height="51dp"
         android:layout_marginTop="232dp"
         android:text="@string/buttonCreate"
-        app:layout_constraintEnd_toEndOf="@+id/edit_text_email"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_password_login"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/edit_text_email"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+        app:layout_constraintStart_toStartOf="@+id/edit_text_password_login"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_login" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView2"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:text="@string/usuario"
-        app:layout_constraintStart_toStartOf="@+id/edit_text_usuario"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_login_email"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -76,8 +76,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/emailLogin"
-        app:layout_constraintStart_toStartOf="@+id/edit_text_email"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_usuario" />
+        app:layout_constraintStart_toStartOf="@+id/edit_text_password_login"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_login_email" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView4"
@@ -95,6 +95,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/senha"
         app:layout_constraintStart_toStartOf="@+id/edit_text_senha"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
