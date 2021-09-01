@@ -10,4 +10,10 @@
     <string name="keepLoggedin">Lembrar minha senha</string>
     <string name="forgotPassword">Esqueci minha senha</string>
     <string name="forgotPasswordSubmit">Enviar e-mail de recuperação</string>
+
+    //MainActivity
+    <string name="lavadorNew">Sou Lavador</string>
+    <string name="clientNew">Sou Cliente</string>
+    <string name="login">Fazer Login</string>
+    <string name="newHere">É novo aqui?</string>
 </resources>
