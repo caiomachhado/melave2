@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class CreateAccountActivity() : AppCompatActivity() {
+class CreateAccountActivity : AppCompatActivity() {
 
     private var edit_text_usuario: EditText? = null
     private var edit_text_email: EditText? = null
@@ -48,7 +48,7 @@ class CreateAccountActivity() : AppCompatActivity() {
         btn_createAcc = findViewById<Button>(R.id.btn_createAcc)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference.child("Users")
+        mDatabaseReference = mDatabase?.reference?.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
         btn_createAcc?.setOnClickListener { createNewAccount() }
@@ -66,23 +66,21 @@ class CreateAccountActivity() : AppCompatActivity() {
             Toast.makeText(this, "Entre com mais detalhes", Toast.LENGTH_SHORT).show()
         }
 
+        mProgressBar?.setMessage("Registrando Usuario...")
+        mProgressBar?.show()
 
-        mProgressBar!!.setMessage("Registrando Usuario...")
-        mProgressBar!!.show()
 
         mAuth!!.createUserWithEmailAndPassword(email!!, senha!!).addOnCompleteListener(this) { task ->
-            mProgressBar!!.hide()
 
             if (task.isSuccessful) {
                 Log.d(TAG, "CreateUserWithEmail:Sucess")
 
                 val userId = mAuth!!.currentUser!!.uid
 
-                verifyEmail();
+                verifyEmail()
 
-                val currentUserDb = mDatabaseReference!!.child(userId)
+                val currentUserDb =  mDatabaseReference!!.child(userId)
                 currentUserDb.child("usuario").setValue(usuario)
-                currentUserDb.child("email").setValue(email)
 
                 updateUserInfoandUi()
 
@@ -97,12 +95,12 @@ class CreateAccountActivity() : AppCompatActivity() {
     }
 
     private fun verifyEmail() {
-        val mUser = mAuth!!.currentUser;
-        mUser!!.sendEmailVerification().addOnCompleteListener(this){
+        val mUser = mAuth?.currentUser;
+        mUser?.sendEmailVerification()?.addOnCompleteListener(this){
             task ->
 
             if(task.isSuccessful){
-                Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para" + mUser.email,
+                Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para " + mUser.email,
                         Toast.LENGTH_SHORT).show()
             } else {
                 Log.e(TAG, "SendEmailVerification", task.exception)
