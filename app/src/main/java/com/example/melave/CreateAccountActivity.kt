@@ -40,7 +40,7 @@ class CreateAccountActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
 
-        initialise()
+        initialise();
     }
 
     private fun initialise() {
@@ -53,7 +53,7 @@ class CreateAccountActivity() : AppCompatActivity() {
         mDatabaseReference = Firebase.database.getReference("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        btn_create!!.setOnClickListener { createNewAccount() }
+        btn_create?.setOnClickListener { createNewAccount() }
 
     }
 
@@ -61,13 +61,13 @@ class CreateAccountActivity() : AppCompatActivity() {
         usuario = edit_text_usuario?.text.toString()
         email = edit_text_email?.text.toString()
         senha = edit_text_senha?.text.toString()
-        reSenha = edit_text_reSenha?.text.toString()
 
-        if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha) && !TextUtils.isEmpty(reSenha)) {
+        if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)) {
             Toast.makeText(this, "Informações preenchidas corretamente", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(this, "Entre com mais detalhes", Toast.LENGTH_SHORT).show()
         }
+
 
         mProgressBar!!.setMessage("Registrando Usuario...")
         mProgressBar!!.show()
