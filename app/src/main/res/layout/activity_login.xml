@@ -14,6 +14,13 @@
         android:layout_height="49dp"
         android:layout_marginTop="212dp"
         android:fontFamily="sans-serif"
+        android:paddingStart="20sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="0sp"
+        android:paddingTop="0sp"
+        android:paddingBottom="0sp"
+        android:paddingEnd="0sp"
+        android:background="@drawable/layout_edit_text_input"
         android:hint="@string/emailLogin"
         android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,18 +77,29 @@
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/layout_edit_text_input"
+        android:paddingStart="20sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="0sp"
+        android:paddingTop="0sp"
+        android:paddingBottom="0sp"
+        android:paddingEnd="0sp"
         android:hint="@string/senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_usuario_login" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView"
         android:layout_width="134dp"
         android:layout_height="116dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="73dp" />
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_usuario_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
