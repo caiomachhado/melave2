@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initialise() {
         tvForgotPassword = findViewById<TextView>(R.id.edit_text_forgotPass)
-        edit_text_login_email = findViewById<EditText>(R.id.edit_text_login_email)
+        edit_text_login_email = findViewById<EditText>(R.id.edit_text_usuario_login)
         edit_text_password_login = findViewById<EditText>(R.id.edit_text_password_login)
         btn_login = findViewById<Button>(R.id.btn_create)
         btn_create_account = findViewById<Button>(R.id.btn_create_account)

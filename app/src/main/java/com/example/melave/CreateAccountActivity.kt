@@ -20,7 +20,7 @@ class CreateAccountActivity() : AppCompatActivity() {
     private var edit_text_usuario: EditText? = null
     private var edit_text_email: EditText? = null
     private var edit_text_senha: EditText? = null
-    private var btn_create: Button? = null
+    private var btn_createAcc: Button? = null
     private var mProgressBar: ProgressDialog? = null
 
     private var mDatabaseReference: DatabaseReference? = null
@@ -42,15 +42,16 @@ class CreateAccountActivity() : AppCompatActivity() {
     }
 
     private fun initialise() {
-        edit_text_usuario = findViewById<EditText>(R.id.edit_text_login_email)
-        edit_text_email = findViewById<EditText>(R.id.edit_text_password_login)
-        edit_text_senha = findViewById<EditText>(R.id.edit_text_senha)
+        edit_text_usuario = findViewById<EditText>(R.id.edit_text_createAcc_usuario_)
+        edit_text_email = findViewById<EditText>(R.id.edit_text_createAcc_email)
+        edit_text_senha = findViewById<EditText>(R.id.edit_text_createAcc_password)
+        btn_createAcc = findViewById<Button>(R.id.btn_createAcc)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = Firebase.database.getReference("Users")
+        mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        btn_create?.setOnClickListener { createNewAccount() }
+        btn_createAcc?.setOnClickListener { createNewAccount() }
 
     }
 
