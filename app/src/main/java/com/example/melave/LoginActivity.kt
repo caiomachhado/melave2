@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         tvForgotPassword = findViewById<TextView>(R.id.edit_text_forgotPass)
         edit_text_login_email = findViewById<EditText>(R.id.edit_text_login_email)
         edit_text_password_login = findViewById<EditText>(R.id.edit_text_password_login)
-        btn_login = findViewById<Button>(R.id.btn_login)
+        btn_login = findViewById<Button>(R.id.btn_create)
         btn_create_account = findViewById<Button>(R.id.btn_create_account)
         mProgressBar = ProgressDialog(this)
 
@@ -89,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUi() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginActivity, FeedActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

@@ -6,6 +6,7 @@
     <string name="buttonLogin">Login</string>
     <string name="buttonCreate">Criar Conta</string>
     <string name="emailLogin">Email</string>
+    <string name="confirmation">Login Realizado com Sucesso</string>
     <string name="keepLoggedin">Lembrar minha senha</string>
     <string name="forgotPassword">Esqueci minha senha</string>
     <string name="forgotPasswordSubmit">Enviar e-mail de recuperação</string>

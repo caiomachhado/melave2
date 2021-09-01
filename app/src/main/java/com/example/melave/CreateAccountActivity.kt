@@ -83,7 +83,7 @@ class CreateAccountActivity() : AppCompatActivity() {
                 currentUserDb.child("usuario").setValue(usuario)
                 currentUserDb.child("email").setValue(email)
 
-                updateUserInfoandUi();
+                updateUserInfoandUi()
 
             } else {
 
@@ -111,7 +111,7 @@ class CreateAccountActivity() : AppCompatActivity() {
     }
 
     private fun updateUserInfoandUi() {
-        val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
+        val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
