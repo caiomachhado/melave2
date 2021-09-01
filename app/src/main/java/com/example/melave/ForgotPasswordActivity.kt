@@ -1,5 +1,6 @@
 package com.example.melave
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -49,11 +50,19 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                             updateUI()
                         } else {
-                            Log.w(TAG, task.exception!!.message)
+                            Log.w(TAG, task.exception!!.message!!)
                             Toast.makeText(this, "Nenhum usuário com esse e-mail", Toast.LENGTH_SHORT).show()
                         }
                     }
+        } else {
+            Toast.makeText(this, "Entre com um e-mail válido", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateUI() {
+        val intent = Intent(this@ForgotPasswordActivity, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
 }

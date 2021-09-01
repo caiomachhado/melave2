@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.melave
 
 import android.app.ProgressDialog
@@ -14,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
-@Suppress("DEPRECATION")
 class CreateAccountActivity() : AppCompatActivity() {
 
     private var edit_text_usuario: EditText? = null
@@ -51,7 +50,7 @@ class CreateAccountActivity() : AppCompatActivity() {
         edit_text_reSenha = findViewById<EditText>(R.id.edit_text_reSenha)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference.child("Users")
+        mDatabaseReference = Firebase.database.getReference("Users")
         mAuth = FirebaseAuth.getInstance()
 
         btn_create!!.setOnClickListener { createNewAccount() }

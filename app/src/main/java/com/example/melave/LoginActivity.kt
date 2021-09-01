@@ -38,18 +38,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initialise() {
-        tvForgotPassword = findViewById(R.id.edit_text_forgotPass) as TextView
-        edit_text_login_email = findViewById(R.id.edit_text_login_email) as EditText
-        edit_text_password_login = findViewById(R.id.edit_text_password_login) as EditText
-        btn_login = findViewById(R.id.btn_login) as Button
-        btn_create_account = findViewById(R.id.btn_create_account) as Button
+        tvForgotPassword = findViewById<TextView>(R.id.edit_text_forgotPass)
+        edit_text_login_email = findViewById<EditText>(R.id.edit_text_login_email)
+        edit_text_password_login = findViewById<EditText>(R.id.edit_text_password_login)
+        btn_login = findViewById<Button>(R.id.btn_login)
+        btn_create_account = findViewById<Button>(R.id.btn_create_account)
         mProgressBar = ProgressDialog(this)
 
         mAuth = FirebaseAuth.getInstance()
 
         tvForgotPassword!!.setOnClickListener{ startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))}
 
-        btn_create_account!!.setOnClickListener{ startActivity((Intent(this@LoginActivity, CreateAccountActivity::class.java))) }
+        btn_create_account!!.setOnClickListener{ startActivity(Intent(this@LoginActivity, CreateAccountActivity::class.java))}
 
         btn_login!!.setOnClickListener { loginUser() }
 
