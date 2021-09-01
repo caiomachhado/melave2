@@ -20,7 +20,6 @@ class CreateAccountActivity() : AppCompatActivity() {
     private var edit_text_usuario: EditText? = null
     private var edit_text_email: EditText? = null
     private var edit_text_senha: EditText? = null
-    private var edit_text_reSenha: EditText? = null
     private var btn_create: Button? = null
     private var mProgressBar: ProgressDialog? = null
 
@@ -33,7 +32,6 @@ class CreateAccountActivity() : AppCompatActivity() {
     private var usuario: String? = null
     private var email: String? = null
     private var senha: String? = null
-    private var reSenha: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +45,6 @@ class CreateAccountActivity() : AppCompatActivity() {
         edit_text_usuario = findViewById<EditText>(R.id.edit_text_login_email)
         edit_text_email = findViewById<EditText>(R.id.edit_text_password_login)
         edit_text_senha = findViewById<EditText>(R.id.edit_text_senha)
-        edit_text_reSenha = findViewById<EditText>(R.id.edit_text_reSenha)
 
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = Firebase.database.getReference("Users")
