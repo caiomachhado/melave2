@@ -17,6 +17,10 @@
     <string name="login">Fazer Login</string>
     <string name="newHere">É novo aqui?</string>
 
+    //CreateLavador
+    <string name="nameLavador">Nome do Lavador</string>
+
+
     //FeedLavador
     <string name="feedLavador">LOGADO COMO LAVADOR</string>
 
