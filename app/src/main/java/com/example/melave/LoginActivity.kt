@@ -2,7 +2,6 @@ package com.example.melave
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -10,7 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
 
@@ -65,17 +69,38 @@ class LoginActivity : AppCompatActivity() {
 
             Log.d(TAG, "Login do usuário")
 
-            mAuth!!.signInWithEmailAndPassword(email!!, password!!).addOnCompleteListener(this){
-                task ->
+            mAuth!!.signInWithEmailAndPassword(email!!, password!!).addOnCompleteListener(this){ task ->
 
                 mProgressBar!!.hide()
 
                 if (task.isSuccessful){
-                    Log.d(TAG,  "Logado com sucesso")
-                    updateUi()
+                    Log.d(TAG, "Logado com sucesso")
+                    val rootRef = FirebaseDatabase.getInstance().reference
+                    val messageRef = rootRef.child("users")
+                    val valueEventListener = object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (ds in dataSnapshot.children) {
+                                val check = ds.child("adminOrUser").getValue(String::class.java)
+                                Log.d("TAG",  check + " " )
+
+                                if (check == "User"){
+                                    updateUiUser()
+                                } else {
+                                    updateUi()
+                                }
+
+                            }
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
+                        }
+                    }
+                    messageRef.addListenerForSingleValueEvent(valueEventListener)
+
                 } else {
 
-                    Log.e(TAG, "Erro ao logar.",task.exception)
+                    Log.e(TAG, "Erro ao logar.", task.exception)
                     Toast.makeText(this@LoginActivity, "Autenticação com Falhas", Toast.LENGTH_SHORT).show()
 
                 }
@@ -88,7 +113,21 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    private fun updateUiUser() {
+
+        var currentuser = FirebaseAuth.getInstance().currentUser?.uid;
+
+
+        val intent = Intent(this@LoginActivity, FeedActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
     private fun updateUi() {
+
+        var currentuser = FirebaseAuth.getInstance().currentUser?.uid;
+
+
         val intent = Intent(this@LoginActivity, FeedActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)

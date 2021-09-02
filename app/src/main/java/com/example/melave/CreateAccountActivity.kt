@@ -81,6 +81,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
                 val currentUserDb =  mDatabaseReference!!.child(userId)
                 currentUserDb.child("usuario").setValue(usuario)
+                currentUserDb.child("adminOrUser").setValue("User")
 
                 updateUserInfoandUi()
 

@@ -16,4 +16,11 @@
     <string name="clientNew">Sou Cliente</string>
     <string name="login">Fazer Login</string>
     <string name="newHere">É novo aqui?</string>
+
+    //FeedLavador
+    <string name="feedLavador">LOGADO COMO LAVADOR</string>
+
+    //FeedCliente
+    <string name="feedCliente">LOGADO COMO CLIENTE</string>
+
 </resources>
