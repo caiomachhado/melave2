@@ -105,14 +105,6 @@ class LoginActivity : AppCompatActivity() {
                         Log.e("TAG", "NADA ENCONTRADO NEM PROCURADO", it)
                     }*/
 
-                    val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-                    val userId = currentFirebaseUser!!.uid
-                    Log.d("TAG", userId)
-
-                    val currentUserDb =  mDatabaseReference!!.child(userId)
-                    val adminOrUser = currentUserDb.child("adminOrUser").get()
-                    Log.d("TAG", adminOrUser.toString())
-
                     updateUi()
 
                 } else {
@@ -142,6 +134,17 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUi() {
+
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentFirebaseUser!!.uid
+        Log.d("TAG", userId)
+
+        val currentUserDb =  mDatabaseReference!!.child(userId)
+        val adminOrUser = currentUserDb.child("adminOrUser").get().addOnSuccessListener {
+            Log.d("TAG", "ENCONTRADO ${it.value}")
+        } .addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
 
         val intent = Intent(this@LoginActivity, FeedActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
