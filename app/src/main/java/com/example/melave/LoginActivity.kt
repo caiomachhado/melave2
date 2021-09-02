@@ -142,12 +142,23 @@ class LoginActivity : AppCompatActivity() {
         val currentUserDb =  mDatabaseReference!!.child(userId)
         val adminOrUser = currentUserDb.child("adminOrUser").get().addOnSuccessListener {
             Log.d("TAG", "ENCONTRADO ${it.value}")
+            val isOrNot = it.value
+
+            if (isOrNot?.equals("User") == true){
+                val intent = Intent(this@LoginActivity, FeedActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@LoginActivity, LavadorFeedActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+
         } .addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
 
-        val intent = Intent(this@LoginActivity, FeedActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+
+
     }
 }
