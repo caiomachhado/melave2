@@ -11,10 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -29,6 +29,10 @@ class LoginActivity : AppCompatActivity() {
     private var tvForgotPassword: TextView? = null
     private var btn_create_account: TextView? = null
     private var mProgressBar: ProgressDialog? = null
+
+    private var mDatabaseReference: DatabaseReference? = null
+    private var mDatabase: FirebaseDatabase? = null
+
 
     private var mAuth: FirebaseAuth? = null
 
@@ -49,11 +53,25 @@ class LoginActivity : AppCompatActivity() {
         btn_create_account = findViewById<Button>(R.id.btn_create_account)
         mProgressBar = ProgressDialog(this)
 
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase?.reference?.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        tvForgotPassword!!.setOnClickListener{ startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))}
+        mAuth = FirebaseAuth.getInstance()
 
-        btn_create_account!!.setOnClickListener{ startActivity(Intent(this@LoginActivity, CreateAccountActivity::class.java))}
+        tvForgotPassword!!.setOnClickListener{ startActivity(
+            Intent(
+                this@LoginActivity,
+                ForgotPasswordActivity::class.java
+            )
+        )}
+
+        btn_create_account!!.setOnClickListener{ startActivity(
+            Intent(
+                this@LoginActivity,
+                CreateAccountActivity::class.java
+            )
+        )}
 
         btn_login!!.setOnClickListener { loginUser() }
 
@@ -75,33 +93,36 @@ class LoginActivity : AppCompatActivity() {
 
                 if (task.isSuccessful){
                     Log.d(TAG, "Logado com sucesso")
-                    val rootRef = FirebaseDatabase.getInstance().reference
-                    val messageRef = rootRef.child("users")
-                    val valueEventListener = object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            for (ds in dataSnapshot.children) {
-                                val check = ds.child("adminOrUser").getValue(String::class.java)
-                                Log.d("TAG",  check + " " )
 
-                                if (check == "User"){
-                                    updateUiUser()
-                                } else {
-                                    updateUi()
-                                }
+                   /* val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+                    val userLoginId = currentFirebaseUser!!.uid
+                    Log.d("TAG", userLoginId)
 
-                            }
-                        }
+                    mDatabase?.child("adminOrUser")?.child(userLoginId)?.get()?.addOnSuccessListener {
+                        Log.d("TAG", "ACHADO O VALOR ${it.value}")
+                        Toast.makeText(this@LoginActivity, "${it.value}", Toast.LENGTH_SHORT).show()
+                    }?.addOnFailureListener{
+                        Log.e("TAG", "NADA ENCONTRADO NEM PROCURADO", it)
+                    }*/
 
-                        override fun onCancelled(databaseError: DatabaseError) {
-                            Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
-                        }
-                    }
-                    messageRef.addListenerForSingleValueEvent(valueEventListener)
+                    val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+                    val userId = currentFirebaseUser!!.uid
+                    Log.d("TAG", userId)
+
+                    val currentUserDb =  mDatabaseReference!!.child(userId)
+                    val adminOrUser = currentUserDb.child("adminOrUser").get()
+                    Log.d("TAG", adminOrUser.toString())
+
+                    updateUi()
 
                 } else {
 
                     Log.e(TAG, "Erro ao logar.", task.exception)
-                    Toast.makeText(this@LoginActivity, "Autenticação com Falhas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Autenticação com Falhas",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 }
 
@@ -115,18 +136,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUiUser() {
 
-        var currentuser = FirebaseAuth.getInstance().currentUser?.uid;
-
-
-        val intent = Intent(this@LoginActivity, FeedActivity::class.java)
+        val intent = Intent(this@LoginActivity, LavadorFeedActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
 
     private fun updateUi() {
-
-        var currentuser = FirebaseAuth.getInstance().currentUser?.uid;
-
 
         val intent = Intent(this@LoginActivity, FeedActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
