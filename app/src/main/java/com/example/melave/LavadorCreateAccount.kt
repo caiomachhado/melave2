@@ -18,7 +18,7 @@ class LavadorCreateAccount : AppCompatActivity() {
     private var edit_text_name: EditText? = null
     private var edit_text_email: EditText? = null
     private var edit_text_senha: EditText? = null
-    private var btn_createAcc: Button? = null
+    private var btn_createLavador: Button? = null
     private var mProgressBar: ProgressDialog? = null
 
     private var mDatabaseReference: DatabaseReference? = null
@@ -45,13 +45,13 @@ class LavadorCreateAccount : AppCompatActivity() {
         edit_text_name = findViewById<EditText>(R.id.edit_text_createLavador_name)
         edit_text_email = findViewById<EditText>(R.id.edit_text_createLavador_email)
         edit_text_senha = findViewById<EditText>(R.id.edit_text_createLavador_password)
-        btn_createAcc = findViewById<Button>(R.id.btn_createAcc)
+        btn_createLavador = findViewById<Button>(R.id.btn_createLavador)
 
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase?.reference?.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
-        btn_createAcc?.setOnClickListener { createNewAccount() }
+        btn_createLavador?.setOnClickListener { createNewAccount() }
 
     }
 
@@ -117,10 +117,4 @@ class LavadorCreateAccount : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
-}
-
-
-
-
-
 }
