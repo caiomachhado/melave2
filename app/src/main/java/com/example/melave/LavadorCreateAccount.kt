@@ -67,7 +67,7 @@ class LavadorCreateAccount : AppCompatActivity() {
             Toast.makeText(this, "Entre com mais detalhes", Toast.LENGTH_SHORT).show()
         }
 
-        mProgressBar?.setMessage("Registrando Usuario...")
+        mProgressBar?.setMessage("Registrando Lavador...")
         mProgressBar?.show()
 
 

@@ -42,7 +42,7 @@
         android:id="@+id/edit_text_createLavador_name"
         android:layout_width="314dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="444dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/layout_edit_text_input"
         android:hint="@string/nameLavador"
         android:paddingStart="20sp"
@@ -51,12 +51,10 @@
         android:paddingEnd="0sp"
         android:paddingRight="0sp"
         android:paddingBottom="0sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_createLavador_usuario"
-        app:layout_constraintVertical_bias="0.979" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_createLavador_usuario" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_text_createLavador_email"
