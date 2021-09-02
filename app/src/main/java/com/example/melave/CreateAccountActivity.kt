@@ -42,10 +42,10 @@ class CreateAccountActivity : AppCompatActivity() {
     }
 
     private fun initialise() {
-        edit_text_usuario = findViewById<EditText>(R.id.edit_text_createAcc_usuario_)
-        edit_text_email = findViewById<EditText>(R.id.edit_text_createAcc_email)
-        edit_text_senha = findViewById<EditText>(R.id.edit_text_createAcc_password)
-        btn_createAcc = findViewById<Button>(R.id.btn_createAcc)
+        edit_text_usuario = findViewById(R.id.edit_text_createAcc_usuario_)
+        edit_text_email = findViewById(R.id.edit_text_createAcc_email)
+        edit_text_senha = findViewById(R.id.edit_text_createAcc_password)
+        btn_createAcc = findViewById(R.id.btn_createAcc)
 
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase?.reference?.child("Users")
@@ -69,29 +69,34 @@ class CreateAccountActivity : AppCompatActivity() {
         mProgressBar?.setMessage("Registrando Usuario...")
         mProgressBar?.show()
 
+        mAuth?.let {
 
-        mAuth!!.createUserWithEmailAndPassword(email!!, senha!!).addOnCompleteListener(this) { task ->
+            it.createUserWithEmailAndPassword(email!!, senha!!).addOnCompleteListener(this) { task ->
 
-            if (task.isSuccessful) {
-                Log.d(TAG, "CreateUserWithEmail:Sucess")
+                if (task.isSuccessful) {
+                    Log.d(TAG, "CreateUserWithEmail:Sucess")
 
-                val userId = mAuth!!.currentUser!!.uid
+                    val userId = it.currentUser?.uid
 
-                verifyEmail()
+                    verifyEmail()
 
-                val currentUserDb =  mDatabaseReference!!.child(userId)
-                currentUserDb.child("usuario").setValue(usuario)
-                currentUserDb.child("adminOrUser").setValue("User")
+                    val currentUserDb = userId?.let { it1 -> mDatabaseReference!!.child(it1) }
+                    currentUserDb?.child("usuario")?.setValue(usuario)
+                    currentUserDb?.child("adminOrUser")?.setValue("User")
 
-                updateUserInfoandUi()
+                    updateUserInfoandUi()
 
-            } else {
+                } else {
 
-                Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
-                Toast.makeText(this@CreateAccountActivity, "A autenticação falhou", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
+                    Toast.makeText(this@CreateAccountActivity, "A autenticação falhou", Toast.LENGTH_SHORT).show()
 
+                }
             }
+
         }
+
+
 
     }
 

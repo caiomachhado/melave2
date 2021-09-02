@@ -93,18 +93,6 @@ class LoginActivity : AppCompatActivity() {
 
                 if (task.isSuccessful){
                     Log.d(TAG, "Logado com sucesso")
-
-                   /* val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-                    val userLoginId = currentFirebaseUser!!.uid
-                    Log.d("TAG", userLoginId)
-
-                    mDatabase?.child("adminOrUser")?.child(userLoginId)?.get()?.addOnSuccessListener {
-                        Log.d("TAG", "ACHADO O VALOR ${it.value}")
-                        Toast.makeText(this@LoginActivity, "${it.value}", Toast.LENGTH_SHORT).show()
-                    }?.addOnFailureListener{
-                        Log.e("TAG", "NADA ENCONTRADO NEM PROCURADO", it)
-                    }*/
-
                     updateUi()
 
                 } else {
