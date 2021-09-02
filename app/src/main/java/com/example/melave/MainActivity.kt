@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         btn_newCliente = findViewById<Button>(R.id.btn_newClient)
 
         btn_login!!.setOnClickListener { startActivity(Intent(this@MainActivity, LoginActivity::class.java)) }
-        btn_newLavador!!.setOnClickListener { startActivity(Intent(this@MainActivity, CreateAccountActivity::class.java)) }
+        btn_newLavador!!.setOnClickListener { startActivity(Intent(this@MainActivity, LavadorCreateAccount::class.java)) }
         btn_newCliente!!.setOnClickListener { startActivity(Intent(this@MainActivity, CreateAccountActivity::class.java)) }
 
     }

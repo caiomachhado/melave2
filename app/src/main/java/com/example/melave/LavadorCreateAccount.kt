@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 class LavadorCreateAccount : AppCompatActivity() {
     private var edit_text_usuario: EditText? = null
+    private var edit_text_name: EditText? = null
     private var edit_text_email: EditText? = null
     private var edit_text_senha: EditText? = null
     private var btn_createAcc: Button? = null
@@ -24,9 +25,10 @@ class LavadorCreateAccount : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
-    private val TAG = "CreateAccountActivity"
+    private val TAG = "LavadorCreateAccount"
 
     private var usuario: String? = null
+    private var name: String? = null
     private var email: String? = null
     private var senha: String? = null
 
@@ -40,7 +42,7 @@ class LavadorCreateAccount : AppCompatActivity() {
 
     private fun initialise() {
         edit_text_usuario = findViewById<EditText>(R.id.edit_text_createLavador_usuario)
-        edit_text_usuario = findViewById<EditText>(R.id.edit_text_createLavador_email)
+        edit_text_name = findViewById<EditText>(R.id.edit_text_createLavador_name)
         edit_text_email = findViewById<EditText>(R.id.edit_text_createLavador_email)
         edit_text_senha = findViewById<EditText>(R.id.edit_text_createLavador_password)
         btn_createAcc = findViewById<Button>(R.id.btn_createAcc)
@@ -55,6 +57,7 @@ class LavadorCreateAccount : AppCompatActivity() {
 
     private fun createNewAccount() {
         usuario = edit_text_usuario?.text.toString()
+        name = edit_text_name?.text.toString()
         email = edit_text_email?.text.toString()
         senha = edit_text_senha?.text.toString()
 
@@ -79,14 +82,15 @@ class LavadorCreateAccount : AppCompatActivity() {
 
                 val currentUserDb =  mDatabaseReference!!.child(userId)
                 currentUserDb.child("usuario").setValue(usuario)
-                currentUserDb.child("adminOrUser").setValue("User")
+                currentUserDb.child("nameLavador").setValue(name)
+                currentUserDb.child("adminOrUser").setValue("Lavador")
 
                 updateUserInfoandUi()
 
             } else {
 
                 Log.w(TAG, "CreateUserWithEmail:Failure", task.exception)
-                Toast.makeText(this@CreateAccountActivity, "A autenticação falhou", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LavadorCreateAccount, "A autenticação falhou", Toast.LENGTH_SHORT).show()
 
             }
         }
@@ -99,17 +103,17 @@ class LavadorCreateAccount : AppCompatActivity() {
                 task ->
 
             if(task.isSuccessful){
-                Toast.makeText(this@CreateAccountActivity, "Email de verificação enviado para " + mUser.email,
+                Toast.makeText(this@LavadorCreateAccount, "Email de verificação enviado para " + mUser.email,
                     Toast.LENGTH_SHORT).show()
             } else {
                 Log.e(TAG, "SendEmailVerification", task.exception)
-                Toast.makeText(this@CreateAccountActivity, "Erro ao enviar email de verificação.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LavadorCreateAccount, "Erro ao enviar email de verificação.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun updateUserInfoandUi() {
-        val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
+        val intent = Intent(this@LavadorCreateAccount, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

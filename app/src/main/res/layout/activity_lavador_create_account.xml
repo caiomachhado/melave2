@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_text_createLavador_usuario_2"
+        android:id="@+id/edit_text_createLavador_name"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginBottom="444dp"
@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="@+id/edit_text_createLavador_usuario"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edit_text_createLavador_usuario"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_createLavador_usuario_2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_createLavador_name" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_createLavador"
@@ -103,7 +103,7 @@
         android:layout_height="19dp"
         android:layout_marginTop="108dp"
         android:text="@string/emailLogin"
-        app:layout_constraintEnd_toEndOf="@+id/edit_text_createLavador_usuario_2"
+        app:layout_constraintEnd_toEndOf="@+id/edit_text_createLavador_name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edit_text_createLavador_usuario"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_createLavador_usuario" />
