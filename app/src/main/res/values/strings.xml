@@ -36,5 +36,6 @@
     <string name="lavagem_meia_sola">Lavagem Meia-Sola</string>
     <string name="r">R$</string>
     <string name="adress">Endereço</string>
+    <string name="dot">.</string>
 
 </resources>

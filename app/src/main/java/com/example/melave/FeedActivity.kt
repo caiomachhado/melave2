@@ -86,13 +86,9 @@ class FeedActivity : AppCompatActivity() {
         val nameWasher = currentUserDb.child("clientName").get().addOnSuccessListener {
             Log.d("TAG", "ENCONTRADO ${it.value}")
             val nameSetWasher = it.value
-
-            text_view_client_name?.setOnClickListener {
                 text_view_client_name?.text = nameSetWasher as String?
             }
 
         }
-    }
-
 }
 
