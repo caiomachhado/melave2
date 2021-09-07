@@ -42,7 +42,7 @@ class FeedActivity : AppCompatActivity() {
 
     private fun getUserData() {
 
-        dbref = FirebaseDatabase.getInstance().getReference("Users")
+        dbref = FirebaseDatabase.getInstance().getReference("Washer")
         dbref.addValueEventListener(object : ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {

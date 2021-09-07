@@ -57,7 +57,7 @@ class LavadorCreateAccount : AppCompatActivity() {
         btn_createLavador = findViewById<Button>(R.id.btn_createLavador)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase?.reference?.child("Users")
+        mDatabaseReference = mDatabase?.reference?.child("Washer")
         mAuth = FirebaseAuth.getInstance()
 
         btn_createLavador?.setOnClickListener { createNewAccount() }
