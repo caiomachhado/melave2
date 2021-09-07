@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="145dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
@@ -24,8 +24,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="13dp"
         android:layout_marginLeft="13dp"
         tools:srcCompat="@tools:sample/avatars"
@@ -50,7 +50,7 @@
         android:layout_marginStart="155dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView4"
+        android:id="@+id/washer_name"
         android:layout_width="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="185dp"
@@ -59,7 +59,7 @@
         android:layout_marginStart="185dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView5"
+        android:id="@+id/washer_adress"
         android:layout_width="wrap_content"
         android:layout_marginTop="47dp"
         android:layout_marginLeft="185dp"

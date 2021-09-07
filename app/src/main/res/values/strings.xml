@@ -28,5 +28,7 @@
     <string name="feedCliente">LOGADO COMO CLIENTE</string>
     <string name="complete_wash">Lavagem Completa:</string>
     <string name="medium_wash">Lavagem Meia-Sola:</string>
+    <string name="nome">Nome</string>
+    <string name="completeName">Nome Completo</string>
 
 </resources>

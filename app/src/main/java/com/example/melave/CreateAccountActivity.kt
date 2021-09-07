@@ -20,6 +20,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private var edit_text_usuario: EditText? = null
     private var edit_text_email: EditText? = null
     private var edit_text_senha: EditText? = null
+    private var edit_text_name: EditText? = null
     private var btn_createAcc: Button? = null
     private var mProgressBar: ProgressDialog? = null
 
@@ -30,6 +31,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private val TAG = "CreateAccountActivity"
 
     private var usuario: String? = null
+    private var name: String? = null
     private var email: String? = null
     private var senha: String? = null
 
@@ -43,6 +45,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun initialise() {
         edit_text_usuario = findViewById(R.id.edit_text_createAcc_usuario_)
+        edit_text_name = findViewById(R.id.edit_text_createAcc_name)
         edit_text_email = findViewById(R.id.edit_text_createAcc_email)
         edit_text_senha = findViewById(R.id.edit_text_createAcc_password)
         btn_createAcc = findViewById(R.id.btn_createAcc)
@@ -58,6 +61,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun createNewAccount() {
         usuario = edit_text_usuario?.text.toString()
         email = edit_text_email?.text.toString()
+        name = edit_text_name?.text.toString()
         senha = edit_text_senha?.text.toString()
 
         if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)) {
@@ -83,6 +87,7 @@ class CreateAccountActivity : AppCompatActivity() {
                     val currentUserDb = userId?.let { it1 -> mDatabaseReference!!.child(it1) }
                     currentUserDb?.child("usuario")?.setValue(usuario)
                     currentUserDb?.child("adminOrUser")?.setValue("User")
+                    currentUserDb?.child("clientName")?.setValue(name)
 
                     updateUserInfoandUi()
 
