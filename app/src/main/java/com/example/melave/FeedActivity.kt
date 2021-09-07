@@ -4,11 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class FeedActivity : AppCompatActivity() {
+
+    private lateinit var dbref : DatabaseReference
+    private lateinit var userRecyclerView: RecyclerView
+    private lateinit var userArrayList: ArrayList<Washer>
+    private lateinit var washerAdapter: RecyclerView
 
     private var text_view_client_name: TextView? = null
 
@@ -22,8 +28,45 @@ class FeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed)
 
+        userRecyclerView = findViewById(R.id.washerList)
+        userRecyclerView.layoutManager = LinearLayoutManager(this)
+        userRecyclerView.setHasFixedSize(true)
+
+        userArrayList = arrayListOf<Washer>()
+        getUserData()
+
+
         initialise()
 
+    }
+
+    private fun getUserData() {
+
+        dbref = FirebaseDatabase.getInstance().getReference("Users")
+        dbref.addValueEventListener(object : ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if (snapshot.exists()){
+
+                    for (washerSnapshot in snapshot.children){
+
+                        val washer = washerSnapshot.getValue(Washer::class.java)
+                        userArrayList.add(washer!!)
+
+                    }
+
+                    userRecyclerView.adapter = WasherAdapter(userArrayList)
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        })
 
 
     }
