@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.melave
 
 import android.app.ProgressDialog
@@ -73,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
             )
         )}
 
-        btn_login!!.setOnClickListener { loginUser() }
+        btn_login?.setOnClickListener { loginUser() }
 
     }
 
@@ -82,8 +84,8 @@ class LoginActivity : AppCompatActivity() {
         password = edit_text_password_login?.text.toString()
 
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
-            mProgressBar!!.setMessage("Verificando Usuário")
-            mProgressBar!!.show()
+            mProgressBar?.setMessage("Verificando Usuário")
+            mProgressBar?.show()
 
             Log.d(TAG, "Login do usuário")
 

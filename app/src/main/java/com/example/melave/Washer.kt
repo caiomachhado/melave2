@@ -1,3 +1,4 @@
 package com.example.melave
 
-data class Washer()
+/*data class Washer()
+*/

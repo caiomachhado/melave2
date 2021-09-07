@@ -30,5 +30,11 @@
     <string name="medium_wash">Lavagem Meia-Sola:</string>
     <string name="nome">Nome</string>
     <string name="completeName">Nome Completo</string>
+    <string name="hello_client">Olá,</string>
+    <string name="washer_address">Endereço</string>
+    <string name="lavagem_completa">Lavagem Completa</string>
+    <string name="lavagem_meia_sola">Lavagem Meia-Sola</string>
+    <string name="r">R$</string>
+    <string name="adress">Endereço</string>
 
 </resources>
