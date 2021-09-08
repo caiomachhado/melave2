@@ -37,5 +37,6 @@
     <string name="r">R$</string>
     <string name="adress">Endereço</string>
     <string name="dot">.</string>
+    <string name="text_view_available_washer">Lavadores Disponíveis</string>
 
 </resources>
