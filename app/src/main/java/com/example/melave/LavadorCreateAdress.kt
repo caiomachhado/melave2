@@ -21,12 +21,11 @@ class LavadorCreateAdress : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
-    private val TAG = "LavadorCreateAccount"
+    private val TAG = "LavadorCreateAdress"
 
     private var washerAdress: String? = null
     private var washerComplete: String? = null
     private var washerMedium: String? = null
-    private var btnCreateWasherAdress: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +39,9 @@ class LavadorCreateAdress : AppCompatActivity() {
         edit_text_adress = findViewById(R.id.edit_text_createLavador_adress)
         edit_text_washerComplete = findViewById(R.id.edit_text_createLavador_washComplete)
         edit_text_washerMedium = findViewById(R.id.edit_text_createLavador_washMedium)
-        btnCreateWasherAdress = findViewById(R.id.btn_createWasherAdress)
+        btn_createWasherAdress = findViewById(R.id.btn_createWasherAdress)
 
-        btnCreateWasherAdress?.setOnClickListener { createWasherAdress() }
+        btn_createWasherAdress?.setOnClickListener { createWasherAdress() }
 
 
     }
@@ -61,13 +60,13 @@ class LavadorCreateAdress : AppCompatActivity() {
         currentUserDb.child("washerComplete").setValue(washerComplete)
         currentUserDb.child("washerMedium").setValue(washerMedium)
 
-        updateUserInfoandUi()
+        updateUserAdress()
 
 
     }
 
-    private fun updateUserInfoandUi() {
-        val intent = Intent(this@LavadorCreateAdress, LoginActivity::class.java)
+    private fun updateUserAdress() {
+        val intent = Intent(this@LavadorCreateAdress, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
 
