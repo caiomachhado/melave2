@@ -40,6 +40,7 @@ class LavadorCreateAdress : AppCompatActivity() {
         edit_text_adress = findViewById(R.id.edit_text_createLavador_adress)
         edit_text_washerComplete = findViewById(R.id.edit_text_createLavador_washComplete)
         edit_text_washerMedium = findViewById(R.id.edit_text_createLavador_washMedium)
+        btnCreateWasherAdress = findViewById(R.id.btn_createWasherAdress)
 
         btnCreateWasherAdress?.setOnClickListener { createWasherAdress() }
 
