@@ -1,5 +1,6 @@
 package com.example.melave
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -59,7 +60,19 @@ class LavadorCreateAdress : AppCompatActivity() {
         currentUserDb.child("washerComplete").setValue(washerComplete)
         currentUserDb.child("washerMedium").setValue(washerMedium)
 
+        updateUserInfoandUi()
 
+
+    }
+
+    private fun updateUserInfoandUi() {
+        val intent = Intent(this@LavadorCreateAdress, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentFirebaseUser!!.uid
+        Log.d("TAG", userId)
     }
 }
 
