@@ -41,8 +41,11 @@ class LavadorCreateAdress : AppCompatActivity() {
         edit_text_washerMedium = findViewById(R.id.edit_text_createLavador_washMedium)
         btn_createWasherAdress = findViewById(R.id.btn_createWasherAdress)
 
-        btn_createWasherAdress?.setOnClickListener { createWasherAdress() }
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase?.reference?.child("Washer")
+        mAuth = FirebaseAuth.getInstance()
 
+        btn_createWasherAdress?.setOnClickListener { createWasherAdress() }
 
     }
 
@@ -57,8 +60,8 @@ class LavadorCreateAdress : AppCompatActivity() {
 
         val currentUserDb =  mDatabaseReference!!.child(userId)
         currentUserDb.child("washerAdress").setValue(washerAdress)
-        currentUserDb.child("washerComplete").setValue(washerComplete)
-        currentUserDb.child("washerMedium").setValue(washerMedium)
+        currentUserDb.child("priceWashComplete").setValue(washerComplete)
+        currentUserDb.child("priceWashMedium").setValue(washerMedium)
 
         updateUserAdress()
 
