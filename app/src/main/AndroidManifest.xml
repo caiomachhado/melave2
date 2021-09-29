@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.melave">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MeLave">
-        <activity android:name=".MyCarsActivity"></activity>
+        <activity android:name=".AddCar"></activity>
+        <activity android:name=".MyCarsActivity" />
         <activity android:name=".LavadorCreateAdress" />
         <activity android:name=".LavadorFeedActivity" />
         <activity android:name=".LavadorCreateAccount" />
@@ -25,7 +28,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -44,5 +44,8 @@
     <string name="cor">Cor:</string>
     <string name="situa_o">Situação:</string>
     <string name="meus_carros">Meus Carros</string>
+    <string name="marca_do_carro">Marca do Carro</string>
+    <string name="modelo_do_carro">Modelo do Carro</string>
+    <string name="cor_do_carro">Cor do Carro</string>
 
 </resources>
