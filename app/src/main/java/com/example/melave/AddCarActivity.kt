@@ -49,7 +49,7 @@ class AddCarActivity : AppCompatActivity() {
 
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase?.reference?.child("Cars")
+        mDatabaseReference = mDatabase?.reference?.child("Cars")?.child("")
         mAuth = FirebaseAuth.getInstance()
 
         btn_addCar?.setOnClickListener { addCar() }
@@ -67,11 +67,15 @@ class AddCarActivity : AppCompatActivity() {
         val userId = currentFirebaseUser!!.uid
         Log.d("TAG", userId)
 
-        val currentUserDb =  mDatabaseReference!!.child(userId)
-        currentUserDb.child("carBrand").setValue(carBrand)
-        currentUserDb.child("carModel").setValue(carModel)
-        currentUserDb.child("carColor").setValue(carColor)
-        currentUserDb.child("carNumber").setValue(carNumber)
+        val carsRef =  mDatabaseReference!!.child("cars")
+        val key = carsRef.push().key
+        if (key != null) {
+            carsRef.child(key).child("owner").setValue(userId)
+            carsRef.child(key).child("carBrand").setValue(carBrand)
+            carsRef.child(key).child("carModel").setValue(carModel)
+            carsRef.child(key).child("carColor").setValue(carColor)
+            carsRef.child(key).child("carNumber").setValue(carNumber)
+        }
 
         updateUserCars()
 
