@@ -16,6 +16,7 @@ class AddCarActivity : AppCompatActivity() {
     private var edit_text_add_car_brand: EditText? = null
     private var edit_text_add_car_model: EditText? = null
     private var edit_text_add_car_color: EditText? = null
+    private var edit_text_add_carNumber: EditText? = null
     private var btn_addCar: Button? = null
     private var mProgressBar: ProgressDialog? = null
 
@@ -28,6 +29,7 @@ class AddCarActivity : AppCompatActivity() {
     private var carBrand: String? = null
     private var carModel: String? = null
     private var carColor: String? = null
+    private var carNumber: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,9 @@ class AddCarActivity : AppCompatActivity() {
         edit_text_add_car_brand = findViewById(R.id.edit_text_add_car_brand)
         edit_text_add_car_model = findViewById(R.id.edit_text_add_car_model)
         edit_text_add_car_color = findViewById(R.id.edit_text_add_car_color)
+        edit_text_add_carNumber = findViewById(R.id.edit_text_add_carNumber)
+        btn_addCar = findViewById(R.id.btn_addCar)
+
 
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase?.reference?.child("Cars")
@@ -56,6 +61,7 @@ class AddCarActivity : AppCompatActivity() {
         carBrand = edit_text_add_car_brand?.text.toString()
         carModel = edit_text_add_car_model?.text.toString()
         carColor = edit_text_add_car_color?.text.toString()
+        carNumber = edit_text_add_carNumber?.text.toString()
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userId = currentFirebaseUser!!.uid
@@ -65,6 +71,7 @@ class AddCarActivity : AppCompatActivity() {
         currentUserDb.child("carBrand").setValue(carBrand)
         currentUserDb.child("carModel").setValue(carModel)
         currentUserDb.child("carColor").setValue(carColor)
+        currentUserDb.child("carNumber").setValue(carNumber)
 
         updateUserCars()
 

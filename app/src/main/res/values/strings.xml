@@ -49,5 +49,6 @@
     <string name="adicionar_carro">Adicionar Carro</string>
     <string name="carro">+ Carro</string>
     <string name="meus_carros">Meus Carros</string>
+    <string name="placa_do_carro">Placa do Carro</string>
 
 </resources>
