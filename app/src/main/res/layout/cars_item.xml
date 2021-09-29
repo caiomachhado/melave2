@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="126dp"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView3"
+        android:layout_width="103dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/marca"
+        android:layout_marginStart="130dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/modelo"
+        android:layout_marginStart="130dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/cor"
+        android:layout_marginStart="130dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/situa_o"
+        android:layout_marginStart="130dp" />
+
+
+
+</androidx.cardview.widget.CardView>

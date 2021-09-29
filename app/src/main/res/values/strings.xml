@@ -38,5 +38,11 @@
     <string name="adress">Endereço</string>
     <string name="dot">.</string>
     <string name="text_view_available_washer">Lavadores Disponíveis</string>
+    <string name="nomedousuario">nomeDoUsuario</string>
+    <string name="marca">Marca:</string>
+    <string name="modelo">Modelo:</string>
+    <string name="cor">Cor:</string>
+    <string name="situa_o">Situação:</string>
+    <string name="meus_carros">Meus Carros</string>
 
 </resources>
