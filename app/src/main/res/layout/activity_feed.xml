@@ -7,6 +7,36 @@
     android:background="@drawable/background_feed_client"
     tools:context=".FeedActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_addCarActivity"
+        android:layout_width="105dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/layout_button_login_activity"
+        android:text="@string/carro"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/text_view_client_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_MyCars"
+        android:layout_width="105dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/layout_button_login_activity"
+        android:text="@string/meus_carros"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_addCarActivity"
+        app:layout_constraintStart_toEndOf="@+id/btn_addCarActivity"
+        app:layout_constraintTop_toTopOf="@+id/btn_addCarActivity"
+        app:layout_constraintVertical_bias="0.0" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/washerList"
         android:layout_width="363dp"

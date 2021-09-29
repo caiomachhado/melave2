@@ -42,7 +42,7 @@ class LavadorCreateAdress : AppCompatActivity() {
         btn_createWasherAdress = findViewById(R.id.btn_createWasherAdress)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase?.reference?.child("Washer")
+        mDatabaseReference = mDatabase?.reference?.child("Cars")
         mAuth = FirebaseAuth.getInstance()
 
         btn_createWasherAdress?.setOnClickListener { createWasherAdress() }

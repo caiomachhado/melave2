@@ -1,8 +1,10 @@
 package com.example.melave
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,9 @@ class FeedActivity : AppCompatActivity() {
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userArrayList: ArrayList<Washer>
     private lateinit var washerAdapter: RecyclerView
+
+    private var btn_addCarActivity: Button? = null
+    private var btn_MyCars: Button? = null
 
     private var text_view_client_name: TextView? = null
 
@@ -72,11 +77,18 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun initialise() {
+
+        btn_addCarActivity = findViewById(R.id.btn_addCarActivity)
+        btn_MyCars = findViewById(R.id.btn_MyCars)
+
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase?.reference?.child("Users")
         mAuth = FirebaseAuth.getInstance()
 
         text_view_client_name = findViewById(R.id.text_view_client_name)
+
+        btn_MyCars?.setOnClickListener { startActivity(Intent(this@FeedActivity, MyCarsActivity::class.java)) }
+        btn_addCarActivity?.setOnClickListener { startActivity(Intent(this@FeedActivity, AddCarActivity::class.java)) }
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userId = currentFirebaseUser!!.uid
