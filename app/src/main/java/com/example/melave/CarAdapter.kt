@@ -33,10 +33,10 @@ class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<Car
 
     class MyViewHolder(carView : View) : RecyclerView.ViewHolder(carView){
 
-        val carBrand : TextView? = carView.findViewById(R.id.edit_text_add_car_brand)
-        val carModel : TextView? = carView.findViewById(R.id.edit_text_add_car_model)
-        val carColor : TextView? = carView.findViewById(R.id.edit_text_add_car_color)
-        val carNumber : TextView? = carView.findViewById(R.id.edit_text_add_carNumber)
+        val carBrand : TextView? = carView.findViewById(R.id.carBrand)
+        val carModel : TextView? = carView.findViewById(R.id.carModel)
+        val carColor : TextView? = carView.findViewById(R.id.carColor)
+        val carNumber : TextView? = carView.findViewById(R.id.carNumber)
 
     }
 
