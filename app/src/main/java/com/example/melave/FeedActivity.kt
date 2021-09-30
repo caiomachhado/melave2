@@ -16,7 +16,6 @@ class FeedActivity : AppCompatActivity() {
     private lateinit var dbref : DatabaseReference
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userArrayList: ArrayList<Washer>
-    private lateinit var washerAdapter: RecyclerView
 
     private var btn_addCarActivity: Button? = null
     private var btn_MyCars: Button? = null

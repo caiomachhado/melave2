@@ -10,9 +10,8 @@ import com.google.firebase.database.*
 class MyCarsActivity : AppCompatActivity() {
 
     private lateinit var dbref : DatabaseReference
-    private lateinit var userRecyclerView: RecyclerView
+    private lateinit var carsRecyclerView: RecyclerView
     private lateinit var userArrayList: ArrayList<Car>
-    private lateinit var CarAdapter: RecyclerView
 
     private var mDatabaseReference: DatabaseReference? = null
     private var mDatabase: FirebaseDatabase? = null
@@ -24,14 +23,12 @@ class MyCarsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_cars)
 
-        userRecyclerView = findViewById(R.id.carList)
-        userRecyclerView.layoutManager = LinearLayoutManager(this)
-        userRecyclerView.setHasFixedSize(true)
+        carsRecyclerView = findViewById(R.id.carsList)
+        carsRecyclerView.layoutManager = LinearLayoutManager(this)
+        carsRecyclerView.setHasFixedSize(true)
 
         userArrayList = arrayListOf()
         getCarData()
-
-        initialise()
 
     }
 
