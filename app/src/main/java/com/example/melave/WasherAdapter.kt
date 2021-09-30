@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 class WasherAdapter(private val washerList: ArrayList<Washer>) : RecyclerView.Adapter<WasherAdapter.MyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WasherAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.washer_available,
         parent, false)
         return MyViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: WasherAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentItem = washerList[position]
 

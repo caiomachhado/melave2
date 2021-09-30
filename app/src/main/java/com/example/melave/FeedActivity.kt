@@ -37,7 +37,7 @@ class FeedActivity : AppCompatActivity() {
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.setHasFixedSize(true)
 
-        userArrayList = arrayListOf<Washer>()
+        userArrayList = arrayListOf()
         getUserData()
 
 
