@@ -34,7 +34,7 @@ class MyCarsActivity : AppCompatActivity() {
 
     private fun getCarData() {
 
-        dbref = FirebaseDatabase.getInstance().getReference("Cars").child("cars")
+        dbref = FirebaseDatabase.getInstance().getReference("Cars")
         dbref.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {

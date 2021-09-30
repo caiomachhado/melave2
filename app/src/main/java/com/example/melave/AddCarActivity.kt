@@ -49,7 +49,7 @@ class AddCarActivity : AppCompatActivity() {
 
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase?.reference?.child("Cars")?.child("")
+        mDatabaseReference = mDatabase?.reference?.child("")
         mAuth = FirebaseAuth.getInstance()
 
         btn_addCar?.setOnClickListener { addCar() }
@@ -67,7 +67,7 @@ class AddCarActivity : AppCompatActivity() {
         val userId = currentFirebaseUser!!.uid
         Log.d("TAG", userId)
 
-        val carsRef =  mDatabaseReference!!.child("cars")
+        val carsRef =  mDatabaseReference!!.child("Cars")
         val key = carsRef.push().key
         if (key != null) {
             carsRef.child(key).child("owner").setValue(userId)

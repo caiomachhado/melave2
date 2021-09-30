@@ -19,10 +19,10 @@ class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<Car
 
         val currentItem = carList[position]
 
-        holder.carBrand.text = currentItem.carBrand
-        holder.carModel.text = currentItem.carModel
-        holder.carColor.text = currentItem.carColor
-        holder.carNumber.text = currentItem.carNumber
+        holder.carBrand?.text = currentItem.carBrand
+        holder.carModel?.text = currentItem.carModel
+        holder.carColor?.text = currentItem.carColor
+        holder.carNumber?.text = currentItem.carNumber
     }
 
     override fun getItemCount(): Int {
@@ -33,10 +33,10 @@ class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<Car
 
     class MyViewHolder(carView : View) : RecyclerView.ViewHolder(carView){
 
-        val carBrand : TextView = carView.findViewById(R.id.edit_text_add_car_brand)
-        val carModel : TextView = carView.findViewById(R.id.edit_text_add_car_model)
-        val carColor : TextView = carView.findViewById(R.id.edit_text_add_car_color)
-        val carNumber : TextView = carView.findViewById(R.id.edit_text_add_carNumber)
+        val carBrand : TextView? = carView.findViewById(R.id.edit_text_add_car_brand)
+        val carModel : TextView? = carView.findViewById(R.id.edit_text_add_car_model)
+        val carColor : TextView? = carView.findViewById(R.id.edit_text_add_car_color)
+        val carNumber : TextView? = carView.findViewById(R.id.edit_text_add_carNumber)
 
     }
 
