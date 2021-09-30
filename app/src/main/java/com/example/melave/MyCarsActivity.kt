@@ -48,7 +48,7 @@ class MyCarsActivity : AppCompatActivity() {
 
                     }
 
-                    userRecyclerView.adapter = CarAdapter(userArrayList)
+                    carsRecyclerView.adapter = CarAdapter(userArrayList)
 
                 }
 
