@@ -1,11 +1,7 @@
 package com.example.melave
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +25,7 @@ class MyCarsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_cars)
 
         userRecyclerView = findViewById(R.id.carList)
-        userRecyclerView.LayoutManager = LinearLayoutManager(this)
+        userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.setHasFixedSize(true)
 
         userArrayList = arrayListOf()
