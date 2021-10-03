@@ -39,9 +39,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/washerList"
-        android:layout_width="363dp"
-        android:layout_height="574dp"
-        android:layout_marginTop="144dp"
+        android:layout_width="360dp"
+        android:layout_height="541dp"
+        android:layout_marginTop="156dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

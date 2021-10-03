@@ -50,5 +50,14 @@
     <string name="carro">+ Carro</string>
     <string name="meus_carros">Meus Carros</string>
     <string name="placa_do_carro">Placa do Carro</string>
+    <string name="placa">Placa:</string>
+    <string name="modelo">Modelo:</string>
+    <string name="carmodel">carModel</string>
+    <string name="carcolor">carColor</string>
+    <string name="carsituation">carSituation</string>
+    <string name="cor">Cor:</string>
+    <string name="marca">Marca:</string>
+    <string name="carbrand">carBrand</string>
+    <string name="situa_o">Situação:</string>
 
 </resources>

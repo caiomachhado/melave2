@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.MyViewHolder>() {
+class CarAdapter(private val carList: ArrayList<Car>, var clickCar : ClickCar) : RecyclerView.Adapter<CarAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -23,11 +24,23 @@ class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<Car
         holder.carModel?.text = currentItem.carModel
         holder.carColor?.text = currentItem.carColor
         holder.carNumber?.text = currentItem.carNumber
+
+        holder.cardView?.setOnClickListener{
+
+            clickCar.clickCar(currentItem)
+
+        }
     }
 
     override fun getItemCount(): Int {
 
         return carList.size
+
+    }
+
+    interface ClickCar{
+
+        fun clickCar(car: Car)
 
     }
 
@@ -37,6 +50,8 @@ class CarAdapter(private val carList: ArrayList<Car>) : RecyclerView.Adapter<Car
         val carModel : TextView? = carView.findViewById(R.id.carModel)
         val carColor : TextView? = carView.findViewById(R.id.carColor)
         val carNumber : TextView? = carView.findViewById(R.id.carNumber)
+
+        val cardView : CardView? = carView.findViewById(R.id.cardView_carItem)
 
     }
 

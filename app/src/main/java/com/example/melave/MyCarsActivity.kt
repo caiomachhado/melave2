@@ -13,12 +13,6 @@ class MyCarsActivity : AppCompatActivity() {
     private lateinit var carsRecyclerView: RecyclerView
     private lateinit var userArrayList: ArrayList<Car>
 
-    private var mDatabaseReference: DatabaseReference? = null
-    private var mDatabase: FirebaseDatabase? = null
-    private var mAuth: FirebaseAuth? = null
-
-    private val TAG = "MyCarsActivity"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_cars)
@@ -48,7 +42,7 @@ class MyCarsActivity : AppCompatActivity() {
 
                     }
 
-                    carsRecyclerView.adapter = CarAdapter(userArrayList)
+                    //carsRecyclerView.adapter = CarAdapter(userArrayList)
 
                 }
 
