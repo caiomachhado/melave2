@@ -1,19 +1,25 @@
 package com.example.melave
 
+
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ValueEventListener
 
-class CarAdapter(private val carList: ArrayList<Car>, var clickCar : ClickCar) : RecyclerView.Adapter<CarAdapter.MyViewHolder>(){
+class CarAdapter(
+    private val carList: ArrayList<Car>) : RecyclerView.Adapter<CarAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val carView = LayoutInflater.from(parent.context).inflate(R.layout.cars_item,
                 parent, false)
         return MyViewHolder(carView)
+
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -25,11 +31,14 @@ class CarAdapter(private val carList: ArrayList<Car>, var clickCar : ClickCar) :
         holder.carColor?.text = currentItem.carColor
         holder.carNumber?.text = currentItem.carNumber
 
-        holder.cardView?.setOnClickListener{
-
-            clickCar.clickCar(currentItem)
-
+        holder.itemView.setOnClickListener {
+            val intent = Intent(
+                it.context, CarDetailsActivity::class.java
+            )
+            intent.putExtra("carDetails", currentItem)
+            it.context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -38,21 +47,16 @@ class CarAdapter(private val carList: ArrayList<Car>, var clickCar : ClickCar) :
 
     }
 
-    interface ClickCar{
+     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        fun clickCar(car: Car)
-
-    }
-
-    class MyViewHolder(carView : View) : RecyclerView.ViewHolder(carView){
-
-        val carBrand : TextView? = carView.findViewById(R.id.carBrand)
-        val carModel : TextView? = carView.findViewById(R.id.carModel)
-        val carColor : TextView? = carView.findViewById(R.id.carColor)
-        val carNumber : TextView? = carView.findViewById(R.id.carNumber)
-
-        val cardView : CardView? = carView.findViewById(R.id.cardView_carItem)
+        val carBrand: TextView? = itemView.findViewById(R.id.carBrand)
+        val carModel: TextView? = itemView.findViewById(R.id.carModel)
+        val carColor: TextView? = itemView.findViewById(R.id.carColor)
+        val carNumber: TextView? = itemView.findViewById(R.id.carNumber)
 
     }
 
-}
+    }
+
+
+

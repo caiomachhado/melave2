@@ -1,5 +1,6 @@
 package com.example.melave
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,15 @@ class WasherAdapter(private val washerList: ArrayList<Washer>) : RecyclerView.Ad
         holder.washerAdress.text = currentItem.washerAdress
         holder.priceWashComplete.text = currentItem.priceWashComplete
         holder.priceWashMedium.text = currentItem.priceWashMedium
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(
+                it.context, WasherDetails::class.java
+            )
+            intent.putExtra("washerDetails", currentItem)
+            it.context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -41,3 +51,5 @@ class WasherAdapter(private val washerList: ArrayList<Washer>) : RecyclerView.Ad
     }
 
 }
+
+

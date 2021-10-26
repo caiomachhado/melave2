@@ -1,7 +1,11 @@
 package com.example.melave
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -28,22 +32,28 @@ class MyCarsActivity : AppCompatActivity() {
 
     private fun getCarData() {
 
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentFirebaseUser!!.uid
+        Log.d("CAIO", "ID do Usuário: $userId")
+
         dbref = FirebaseDatabase.getInstance().getReference("Cars")
-        dbref.addValueEventListener(object: ValueEventListener{
+
+
+        dbref.child("Cars")
+            .addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
-                    for (carSnapshot in snapshot.children){
+                    for (carSnapshot in snapshot.children) {
 
                         val car = carSnapshot.getValue(Car::class.java)
                         userArrayList.add(car!!)
 
                     }
 
-                    //carsRecyclerView.adapter = CarAdapter(userArrayList)
-
+                    carsRecyclerView.adapter = CarAdapter(userArrayList)
                 }
 
             }
@@ -55,4 +65,5 @@ class MyCarsActivity : AppCompatActivity() {
         })
 
     }
+
 }

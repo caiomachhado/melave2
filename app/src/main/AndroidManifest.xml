@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeLave">
         <activity
+            android:name=".WasherDetails"
+            android:exported="true" />
+        <activity
             android:name=".CarDetailsActivity"
             android:exported="true" />
         <activity android:name=".AddCarActivity" />
