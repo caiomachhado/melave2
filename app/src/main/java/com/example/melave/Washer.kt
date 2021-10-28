@@ -1,5 +1,6 @@
 package com.example.melave
 
+import androidx.recyclerview.widget.RecyclerView
 import java.io.Serializable
 
 data class Washer(var nameLavador: String? = null,

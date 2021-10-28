@@ -5,5 +5,6 @@ import java.io.Serializable
 data class Car(var carBrand: String? = null,
                var carModel: String? = null,
                var carColor: String? = null,
-               var carNumber: String? = null
+               var carNumber: String? = null,
+               var carSituation: String? = null
 ): Serializable

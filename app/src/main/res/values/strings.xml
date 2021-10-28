@@ -56,5 +56,7 @@
     <string name="carsituation">carSituation</string>
     <string name="completa">Completa</string>
     <string name="meia_sola">Meia-Sola</string>
+    <string name="carro_selecionado">Carro Selecionado:</string>
+    <string name="nomedocarro">nomedocarro</string>
 
 </resources>

@@ -36,24 +36,23 @@ class MyCarsActivity : AppCompatActivity() {
         val userId = currentFirebaseUser!!.uid
         Log.d("CAIO", "ID do Usuário: $userId")
 
-        dbref = FirebaseDatabase.getInstance().getReference("Cars")
+        dbref = FirebaseDatabase.getInstance().getReference("Users").child(userId).child("Cars")
 
 
-        dbref.child("Cars")
+        dbref
             .addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 if (snapshot.exists()) {
 
-                    for (carSnapshot in snapshot.children) {
+                        for (carSnapshot in snapshot.children) {
+                            val car = carSnapshot.getValue(Car::class.java)
+                            userArrayList.add(car!!)
 
-                        val car = carSnapshot.getValue(Car::class.java)
-                        userArrayList.add(car!!)
 
-                    }
-
-                    carsRecyclerView.adapter = CarAdapter(userArrayList)
+                        }
+                        carsRecyclerView.adapter = CarAdapter(userArrayList)
                 }
 
             }

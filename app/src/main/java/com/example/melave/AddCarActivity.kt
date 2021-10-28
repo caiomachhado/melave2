@@ -67,7 +67,7 @@ class AddCarActivity : AppCompatActivity() {
         val userId = currentFirebaseUser!!.uid
         Log.d("TAG", userId)
 
-        val carsRef =  mDatabaseReference!!.child("Cars")
+        val carsRef =  mDatabaseReference!!.child("Users").child(userId).child("Cars").child("")
         val key = carsRef.push().key
         if (key != null) {
             carsRef.child(key).child("owner").setValue(userId)
@@ -75,6 +75,7 @@ class AddCarActivity : AppCompatActivity() {
             carsRef.child(key).child("carModel").setValue(carModel)
             carsRef.child(key).child("carColor").setValue(carColor)
             carsRef.child(key).child("carNumber").setValue(carNumber)
+            carsRef.child(key).child("carSituation").setValue("Na Garagem")
         }
 
         updateUserCars()

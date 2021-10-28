@@ -30,6 +30,7 @@ class CarAdapter(
         holder.carModel?.text = currentItem.carModel
         holder.carColor?.text = currentItem.carColor
         holder.carNumber?.text = currentItem.carNumber
+        holder.carSituation?.text = currentItem.carSituation
 
         holder.itemView.setOnClickListener {
             val intent = Intent(
@@ -53,6 +54,7 @@ class CarAdapter(
         val carModel: TextView? = itemView.findViewById(R.id.carModel)
         val carColor: TextView? = itemView.findViewById(R.id.carColor)
         val carNumber: TextView? = itemView.findViewById(R.id.carNumber)
+         val carSituation: TextView? = itemView.findViewById(R.id.details_car_situation)
 
     }
 
